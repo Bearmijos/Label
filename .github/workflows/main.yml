@@ -10,7 +10,7 @@ jobs:
   Explore:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event.label.name }}"
+      - run: echo ${{ github.event.label.name }}
   Explore-GitHub-Actions:
     if: ${{ github.event.label.name == 'github-market-place-actions' }}
     runs-on: ubuntu-latest
