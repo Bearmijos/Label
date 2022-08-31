@@ -12,7 +12,7 @@ jobs:
     steps:
       - run: echo ${{ github.event.issue.title }} ${{ github.event.issue.node_id }} ${{ github.event.issue.created_at }}  ${{ github.event.issue.labels.*.name }}
       - name: Conditionally Run
-        if:   contains('["bar", "foo"]', 'foo')
+        if:   contains(github.event.issue.labels.*.name, 'bug')
         run:  echo "Wow"
       - name: Conditionally Run 2
         if:   contains(fromJson('${{ github.event.issue.labels.*.name }}'), 'james')
