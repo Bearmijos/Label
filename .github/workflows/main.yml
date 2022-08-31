@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.event.issue.title }} ${{ github.event.issue.node_id }} ${{ github.event.issue.created_at }}  ${{ github.event.label.action }}
-      - run: echo contains(fromJson('["bar", "foo"]'), github.event.action)
+      - name: Conditionally Run
+        if:   contains(fromJson('["bar", "foo"]'), github.event.action)
+        run:  echo "ShouldNotRun"
   Explore-GitHub-Actions:
     if: ${{ github.event.label.name == 'github-market-place-actions' }}
     runs-on: ubuntu-latest
