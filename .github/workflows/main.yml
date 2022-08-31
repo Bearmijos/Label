@@ -10,7 +10,7 @@ jobs:
   Explore:
     runs-on: ubuntu-latest
     steps:
-      - run: echo fromJson(${{ github.event.issue.labels.*.name }}) 
+      - run: echo fromJson('${{ github.event.issue.labels.*.name }}') 
       - name: Conditionally Run
         if:   contains(github.event.issue.labels.*.name, 'github-market-place-actions')
         run:  echo "Wow"
