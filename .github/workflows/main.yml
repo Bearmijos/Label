@@ -12,7 +12,7 @@ jobs:
     steps:
       - run: echo ${{ github.event.issue.title }} ${{ github.event.issue.node_id }} ${{ github.event.issue.created_at }}  ${{ github.event.label.action }}
       - name: Conditionally Run
-        if:   contains(fromJson('["bar", "foo"]'), github.event.action)
+        if:   contains(fromJson('["bar", "foo"]'), 'foo')
         run:  echo "ShouldNotRun"
   Explore-GitHub-Actions:
     if: ${{ github.event.label.name == 'github-market-place-actions' }}
