@@ -15,7 +15,7 @@ jobs:
         if:   contains(github.event.issue.labels.*.name, 'github-market-place-actions')
         run:  echo "Wow"
       - name: Conditionally Run 2
-        if:   contains(${{ github.event.issue.labels.*.name }}, 'james')
+        if:   contains(fromJson('["push", "pull_request"]'), github.event_name)
         run:  echo "ShouldNotRun"
   Explore-GitHub-Actions:
     if: contains(github.event.issue.labels.*.name, 'github-market-place-actions')
