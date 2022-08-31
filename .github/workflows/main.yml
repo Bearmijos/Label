@@ -18,7 +18,7 @@ jobs:
         if:   contains(fromJson('${{ github.event.issue.labels.*.name }}'), 'james')
         run:  echo "ShouldNotRun"
   Explore-GitHub-Actions:
-    if: ${{ github.event.label.name == 'github-market-place-actions' }}
+    if: contains(github.event.issue.labels.*.name, 'github-market-place-actions')
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
