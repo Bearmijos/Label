@@ -7,18 +7,8 @@ on:
       - edited # Runs a workflow when an issue has been edited
       - labeled
 jobs:
-  Explore:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo github.event.issue.labels.*.name[0]
-      - name: Conditionally Run
-        if:   contains(github.event.issue.labels.*.name, 'github-market-place-actions')
-        run:  echo "Wow"
-      - name: Conditionally Run 2
-        if:   contains(fromJson('["push", "pull_request"]'), github.event_name)
-        run:  echo "ShouldNotRun"
   Explore-GitHub-Actions:
-    if: contains(github.event.issue.labels.*.name, 'github-market-place-actions')
+    if: ${{ github.event.label.name == 'github-actions-onboarding' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
