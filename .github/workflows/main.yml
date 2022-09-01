@@ -8,7 +8,7 @@ on:
       - labeled
 jobs:
   Explore-GitHub-Actions:
-    if: ${{ github.event.label.name == 'github-actions-onboarding' }}
+    if: contains(github.event.issue.labels.*.name, 'github-actions-onboarding')
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
